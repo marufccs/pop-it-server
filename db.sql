@@ -8,3 +8,5 @@ CREATE TABLE users (
 );
 
 INSERT INTO users ("first name", "last name", email, "instagram username", gender) values ('Maruf', 'Mozumder', 'maruf@gmail.com', 'maruf_ccs', 'male');
+
+ALTER TABLE users RENAME COLUMN "instagram username" TO instagram_username;
