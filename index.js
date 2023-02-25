@@ -1,6 +1,6 @@
 require("dotenv").config();
 const express = require('express');
-const morgan = require('morgan');
+const db = require('./db/server')
 const app = express();
 const cors = require('cors');
 const PORT = process.env.PORT || 3009;
@@ -16,8 +16,9 @@ app.use((req, res, next) => {
 })
 
 //get all the users
-app.get('/users',(req, res) => {
-    console.log('route handler ran');
+app.get('/users', async (req, res) => {
+    const results = await db.query('select * from users')
+    console.log(results);
     res.status(200).json({
         status: 'success',
         data: {
